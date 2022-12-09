@@ -1,3 +1,3 @@
 import { RootState } from "../store";
 
-export const allTodos = (state: RootState) => state;
+export const selectAllTodos = (state: RootState) => state.todos;

@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface TodoState {
@@ -13,15 +13,24 @@ const todosSlice = createSlice({
   name: "todos",
   initialState: todosInitialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<string>) => {
-      const newTodo = { todo: action.payload, completed: false, id: nanoid() };
-      state.push(newTodo);
+    addTodo: (state, { payload }: PayloadAction<TodoState>) => {
+      state.push(payload);
     },
-    deleteTodo: (state, action: PayloadAction<string>) => {
-      state.filter((contact) => contact.id !== action.payload);
+    deleteTodo: (state, { payload }: PayloadAction<string>) => {
+      return state.filter((contact) => contact.id !== payload);
+    },
+    deleteCompletedTodos: (state, { payload }: PayloadAction<TodoState[]>) => {
+      return (state = payload);
+    },
+    changeComleted: (state, { payload }: PayloadAction<TodoState>) => {
+      return (state = [
+        ...state.filter((todo) => todo.id !== payload.id),
+        payload,
+      ]);
     },
   },
 });
 
-export const { addTodo, deleteTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo, changeComleted, deleteCompletedTodos } =
+  todosSlice.actions;
 export const todosReducer = todosSlice.reducer;

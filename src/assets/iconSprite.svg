@@ -1,7 +1,7 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="icon-check" viewBox="0 0 39 32">
-<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="7.1111" d="M3.556 15.303l9.586 9.586 21.333-21.333"></path>
+<path fill="transparent" stroke="#fff" style="stroke: var(--color1, white)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="7.1111" d="M3.556 15.303l9.586 9.586 21.333-21.333"></path>
 </symbol>
 <symbol id="icon-cross" viewBox="0 0 32 32">
 <path fill="#494c6b" style="fill: var(--color2, #494c6b)" d="M30.169 0l1.259 1.257-14.457 14.459 14.457 14.457-1.257 1.257-14.457-14.457-14.457 14.457-1.257-1.26 14.457-14.457-14.457-14.455 1.257-1.257 14.459 14.457 14.455-14.457z"></path>

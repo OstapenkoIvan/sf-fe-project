@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppDispatch } from "../../assets/hooks";
@@ -12,14 +13,13 @@ export default function TodoForm() {
     register,
     handleSubmit,
     reset,
-    formState,
     formState: { isSubmitSuccessful },
   } = useForm<FormValues>();
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     const { todo } = data;
-    dispatch(addTodo(todo));
+    dispatch(addTodo({ todo, completed: false, id: nanoid() }));
   };
 
   useEffect(() => {
