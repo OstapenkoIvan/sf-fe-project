@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { TodoState } from "../../redux/todos/todosSlice";
+import { TodoState } from "../../redux/todos/todosSlice.js";
 import iconSprite from "../../assets/iconSprite.svg";
-import { useAppDispatch } from "../../assets/hooks";
-import { deleteTodo, changeComleted } from "../../redux/todos/todosSlice";
+import { useAppDispatch, useAppSelector } from "../../assets/hooks.js";
+import { deleteTodo, changeComleted } from "../../redux/todos/todosSlice.js";
+import { selectAllTodos } from "../../redux/todos/todosSelectors.js";
 
-export default function TodoItem({ data }: { data: TodoState }) {
+export function TodoItem({ data }: { data: TodoState }) {
   const [isCompleted, setIsCompleted] = useState(false);
+  const todos = useAppSelector(selectAllTodos);
   const { id, todo, completed } = data;
   const dispatch = useAppDispatch();
 
@@ -25,12 +27,12 @@ export default function TodoItem({ data }: { data: TodoState }) {
           type="checkbox"
           checked={isCompleted}
           onChange={() => setIsCompleted((prev) => !prev)}
-          className="appearance-none w-6 h-6 border-2 group-hover:border-sky-500 rounded-full mr-5 cursor-pointer focus:outline-none peer checked:bg-blue-500 "
+          className="appearance-none w-6 h-6 border-2 group-hover:border-sky-500 rounded-full mr-5 cursor-pointer focus:outline-none peer checked:bg-blue-500 transition"
         />
-        <svg className="w-3 h-3 top-1/2 -translate-y-1/2 left-1.5 cursor-pointer absolute opacity-0 peer-checked:opacity-100 ">
+        <svg className="w-3 h-3 top-1/2 -translate-y-1/2 left-1.5 cursor-pointer absolute opacity-0 peer-checked:opacity-100 transition">
           <use href={`${iconSprite}#icon-check`}></use>
         </svg>
-        <span className="cursor-pointer peer-checked:text-slate-300 peer-checked:line-through">
+        <span className="cursor-pointer peer-checked:text-slate-300 peer-checked:line-through transition">
           {todo}
         </span>
       </label>

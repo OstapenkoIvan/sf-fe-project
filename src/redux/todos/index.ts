@@ -1,2 +1,2 @@
-export * as todosSlice from "./todosSlice";
-export * as todosSelectors from "./todosSelectors";
+export * as todosSlice from "./todosSlice.js";
+export * as todosSelectors from "./todosSelectors.js";

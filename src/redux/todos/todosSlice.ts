@@ -17,10 +17,10 @@ const todosSlice = createSlice({
       state.push(payload);
     },
     deleteTodo: (state, { payload }: PayloadAction<string>) => {
-      return state.filter((contact) => contact.id !== payload);
+      return state.filter((todo) => todo.id !== payload);
     },
-    deleteCompletedTodos: (state, { payload }: PayloadAction<TodoState[]>) => {
-      return (state = payload);
+    deleteCompletedTodos: (state) => {
+      return state.filter((todo) => todo.completed === false);
     },
     changeComleted: (state, { payload }: PayloadAction<TodoState>) => {
       return (state = [
@@ -28,9 +28,17 @@ const todosSlice = createSlice({
         payload,
       ]);
     },
+    shuffleList: (state, action: PayloadAction<TodoState[]>) => {
+      return (state = action.payload);
+    },
   },
 });
 
-export const { addTodo, deleteTodo, changeComleted, deleteCompletedTodos } =
-  todosSlice.actions;
+export const {
+  addTodo,
+  deleteTodo,
+  changeComleted,
+  deleteCompletedTodos,
+  shuffleList,
+} = todosSlice.actions;
 export const todosReducer = todosSlice.reducer;
